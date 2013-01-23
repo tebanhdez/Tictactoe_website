@@ -1,0 +1,77 @@
+
+
+<div align="center">
+  <h1>Tictactoe</h1>
+  </div>
+  <div>
+
+  <div align="center">
+    <p>Calificaciones</p>
+
+    <div> 
+      <% if @winner %>
+        <p> Player has won </p>
+    <% end %>
+    <% if @board_full %>
+        <p> Nobody wins </p>
+    <% end %>
+    
+    </div>
+
+    <table align="center">
+      <tr>
+        <td>
+          <p><i> Player 1:</i></p>
+        </td>
+        <td width="30">
+        </td>
+        <td>
+          <p><i>Player 2:</i></p>
+        </td>
+        <td width="30">
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div align="center" >
+    <table>
+      <tr>
+        <td>
+          <%= button_to @game.board[0][0].nil? ? "__": @game.board[0][0], tictactoe_playermoves_path(row: "0", column:"0"), :disabled => @winner, :method => "post" %>
+        </td>
+        <td>
+          <%= button_to @game.board[0][1].nil? ? "__": @game.board[0][1], tictactoe_playermoves_path(row: "0", column:"1"),  :disabled => @winner,:method => "post"%>
+        </td>
+        <td>
+          <%= button_to @game.board[0][2].nil? ? "__": @game.board[0][2], tictactoe_playermoves_path(row: "0", column:"2"),  :disabled => @winner, :method => "post"%>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= button_to @game.board[1][0].nil? ? "__": @game.board[1][0], tictactoe_playermoves_path(row: "1", column:"0"),  :disabled => @winner,:method => "post"%>
+        </td>
+        <td>
+          <%= button_to @game.board[1][1].nil? ? "__": @game.board[1][1], tictactoe_playermoves_path(row: "1", column:"1"),  :disabled => @winner,:method => "post"%>
+        </td>
+        <td>
+          <%= button_to @game.board[1][2].nil? ? "__": @game.board[1][2], tictactoe_playermoves_path(row: "1", column:"2"),  :disabled => @winner,:method => "post"%>
+        </td>
+      <tr>
+        <td>
+          <%= button_to @game.board[2][0].nil? ? "__": @game.board[2][0], tictactoe_playermoves_path(row: "2", column:"0"), :disabled => @winner, :method => "post"%>
+        </td>
+        <td>
+          <%= button_to @game.board[2][1].nil? ? "__": @game.board[2][1], tictactoe_playermoves_path(row: "2", column:"1"),  :disabled => @winner,:method => "post"%>
+        </td>
+        <td>
+          <%= button_to @game.board[2][2].nil? ? "__": @game.board[2][2], tictactoe_playermoves_path(row: "2", column:"2"), :disabled => @winner, :method => "post"%>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div align="center" height = "150" valign = "center" >
+    <%= button_to "Restart game", tictactoe_newgame_path, :method => "post"%>
+  </div>
+
+

@@ -1,0 +1,55 @@
+
+
+<div align="center">
+  <h1>Tictactoe</h1>
+  </div>
+  <div>
+
+  <div align="center">
+    <p>Calificaciones</p>
+
+    <div> 
+      <% if @winner %>
+        <p> Player has won </p>
+      <% elsif @board_full %>
+          <p> Nobody wins </p>
+      <% end %>
+    
+    </div>
+
+    <table align="center">
+      <tr>
+        <td>
+          <p><i> Player 1:</i></p>
+        </td>
+        <td width="30">
+        </td>
+        <td>
+          <p><i>Player 2:</i></p>
+        </td>
+        <td width="30">
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div align="center" >
+    <table>
+      <% (0 ... 3).each do |row| %>
+      <tr>
+        <% (0 ... 3).each do |column| %>
+        <td>
+          <%= button_to @game.board[row][column].nil? ? "__": @game.board[row][column], 
+            { :action => "player_moves", :row => row, :column => column }, 
+            :disabled => @winner, :method => "post"%>
+        </td>
+      <% end %>
+      </tr>
+    <% end  %>
+    </table>
+  </div>
+</div>
+<div align="center" height = "150" valign = "center" >
+    <%= button_to "Restart game", tictactoe_newgame_path, :method => "post"%>
+  </div>
+
+
